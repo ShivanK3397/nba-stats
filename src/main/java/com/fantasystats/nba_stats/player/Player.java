@@ -2,84 +2,58 @@ package com.fantasystats.nba_stats.player;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
+
 @Entity
 @Table(name="player_stats")
 
 public class Player {
 
-    private int rank;
+    private Integer rank;
     @Id
-    @Column(name="player_name",unique=true)
+    @Column(name="name",unique=true)
     private String name;
     private String pos;
-    private String age;
+    private Integer age;
     private String team;
-    private int gamesPlayed;
-    private int gamesStarted;
-    private double minutesPerGame;
-    private double fieldGoalsPerGame;
-    private double fieldGoalAttemptsPerGame;
-    private double threePointFieldGoals;
-    private double threePointFieldGoalAttempts;
-    private double threePointFieldGoalPercentage;
-    private double twoPointFieldGoals;
-    private double twoPA;
-    // Two-point field goal percentage
-    private double twoPPercent;
+    private Integer gamesPlayed;
+    private Integer gamesStarted;
+    private Double minutesPerGame;
+    private Double fieldGoalsPerGame;
+    private Double fieldGoalAttemptsPerGame;
+    private Double fieldGoalAttemptsPercentage;
+    private Double threePointFieldGoals;
+    private Double threePointFieldGoalAttempts;
+    private Double threePointFieldGoalPercentage;
+    private Double twoPointFieldGoals;
+    private Double twoPA;
+    private Double twoPPercent;
+    private Double eFGPercent;
+    private Double freeThrows;
+    private Double freeThrowAttempts;
+    private Double freeThrowPercent;
+    private Double offensiveRebounds;
+    private Double defensiveRebounds;
+    private Double totalRebounds;
+    private Double assists;
+    private Double steals;
+    private Double blocks;
+    private Double turnovers;
+    private Double personalFouls;
+    private Double pointsPerGame;
 
-    // Effective field goal percentage
-    private double eFGPercent;
-
-    // Free throws per game
-    private double freeThrows;
-
-    // Free throw attempts per game
-    private double freeThrowAttempts;
-
-    // Free throw percentage
-    private double freeThrowPercent;
-
-    // Offensive rebounds per game
-    private double offensiveRebounds;
-
-    // Defensive rebounds per game
-    private double defensiveRebounds;
-
-    // Total rebounds per game
-    private double totalRebounds;
-
-    // Assists per game
-    private double assists;
-
-    // Steals per game
-    private double steals;
-
-    // Blocks per game
-    private double blocks;
-
-    // Turnovers per game
-    private double turnovers;
-
-    // Personal fouls per game
-    private double personalFouls;
-
-    // Points per game
-    private double pointsPerGame;
-
-    public Player() {
-    }
-
-    public Player(int rank, String name, String pos, double fieldGoalAttemptsPerGame, String age, String team, int gamesPlayed, int gamesStarted, double minutesPerGame, double fieldGoalsPerGame, double threePointFieldGoals, double threePointFieldGoalAttempts, double threePointFieldGoalPercentage, double twoPointFieldGoals, double twoPA, double twoPPercent, double eFGPercent, double freeThrows, double freeThrowAttempts, double freeThrowPercent, double offensiveRebounds, double defensiveRebounds, double totalRebounds, double assists, double steals, double blocks, double turnovers, double personalFouls, double pointsPerGame) {
+    public Player(Integer rank, String name, String pos, Integer age, String team, Integer gamesPlayed, Integer gamesStarted, Double minutesPerGame, Double fieldGoalsPerGame, Double fieldGoalAttemptsPerGame, Double fieldGoalAttemptsPercentage, Double threePointFieldGoals, Double threePointFieldGoalAttempts, Double threePointFieldGoalPercentage, Double twoPointFieldGoals, Double twoPA, Double twoPPercent, Double eFGPercent, Double freeThrows, Double freeThrowAttempts, Double freeThrowPercent, Double offensiveRebounds, Double defensiveRebounds, Double totalRebounds, Double assists, Double steals, Double blocks, Double turnovers, Double personalFouls, Double pointsPerGame) {
         this.rank = rank;
         this.name = name;
         this.pos = pos;
-        this.fieldGoalAttemptsPerGame = fieldGoalAttemptsPerGame;
         this.age = age;
         this.team = team;
         this.gamesPlayed = gamesPlayed;
         this.gamesStarted = gamesStarted;
         this.minutesPerGame = minutesPerGame;
         this.fieldGoalsPerGame = fieldGoalsPerGame;
+        this.fieldGoalAttemptsPerGame = fieldGoalAttemptsPerGame;
+        this.fieldGoalAttemptsPercentage = fieldGoalAttemptsPercentage;
         this.threePointFieldGoals = threePointFieldGoals;
         this.threePointFieldGoalAttempts = threePointFieldGoalAttempts;
         this.threePointFieldGoalPercentage = threePointFieldGoalPercentage;
@@ -104,236 +78,247 @@ public class Player {
     public Player(String name) {
         this.name = name;
     }
+    public Player(){
 
-    public int getRank() {
+    }
+
+    public Integer getRank() {
         return rank;
     }
 
-    public double getPointsPerGame() {
-        return pointsPerGame;
-    }
-
-    public double getPersonalFouls() {
-        return personalFouls;
-    }
-
-    public double getTurnovers() {
-        return turnovers;
-    }
-
-    public double getBlocks() {
-        return blocks;
-    }
-
-    public double getSteals() {
-        return steals;
-    }
-
-    public double getAssists() {
-        return assists;
-    }
-
-    public double getTotalRebounds() {
-        return totalRebounds;
-    }
-
-    public double getDefensiveRebounds() {
-        return defensiveRebounds;
-    }
-
-    public double getOffensiveRebounds() {
-        return offensiveRebounds;
-    }
-
-    public double getFreeThrowPercent() {
-        return freeThrowPercent;
-    }
-
-    public double getFreeThrowAttempts() {
-        return freeThrowAttempts;
-    }
-
-    public double getFreeThrows() {
-        return freeThrows;
-    }
-
-    public double geteFGPercent() {
-        return eFGPercent;
-    }
-
-    public double getTwoPPercent() {
-        return twoPPercent;
-    }
-
-    public double getTwoPA() {
-        return twoPA;
-    }
-
-    public double getTwoPointFieldGoals() {
-        return twoPointFieldGoals;
-    }
-
-    public double getThreePointFieldGoalPercentage() {
-        return threePointFieldGoalPercentage;
-    }
-
-    public double getThreePointFieldGoalAttempts() {
-        return threePointFieldGoalAttempts;
-    }
-
-    public double getThreePointFieldGoals() {
-        return threePointFieldGoals;
-    }
-
-    public double getFieldGoalAttemptsPerGame() {
-        return fieldGoalAttemptsPerGame;
-    }
-
-    public double getFieldGoalsPerGame() {
-        return fieldGoalsPerGame;
-    }
-
-    public double getMinutesPerGame() {
-        return minutesPerGame;
-    }
-
-    public int getGamesStarted() {
-        return gamesStarted;
-    }
-
-    public int getGamesPlayed() {
-        return gamesPlayed;
-    }
-
-    public String getTeam() {
-        return team;
-    }
-
-    public String getAge() {
-        return age;
-    }
-
-    public String getPos() {
-        return pos;
+    public void setRank(Integer rank) {
+        this.rank = rank;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setRank(int rank) {
-        this.rank = rank;
-    }
-
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPos() {
+        return pos;
     }
 
     public void setPos(String pos) {
         this.pos = pos;
     }
 
-    public void setAge(String age) {
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
         this.age = age;
+    }
+
+    public String getTeam() {
+        return team;
     }
 
     public void setTeam(String team) {
         this.team = team;
     }
 
-    public void setGamesPlayed(int gamesPlayed) {
+    public Integer getGamesPlayed() {
+        return gamesPlayed;
+    }
+
+    public void setGamesPlayed(Integer gamesPlayed) {
         this.gamesPlayed = gamesPlayed;
     }
 
-    public void setGamesStarted(int gamesStarted) {
+    public Integer getGamesStarted() {
+        return gamesStarted;
+    }
+
+    public void setGamesStarted(Integer gamesStarted) {
         this.gamesStarted = gamesStarted;
     }
 
-    public void setMinutesPerGame(double minutesPerGame) {
+    public Double getMinutesPerGame() {
+        return minutesPerGame;
+    }
+
+    public void setMinutesPerGame(Double minutesPerGame) {
         this.minutesPerGame = minutesPerGame;
     }
 
-    public void setFieldGoalsPerGame(double fieldGoalsPerGame) {
+    public Double getFieldGoalsPerGame() {
+        return fieldGoalsPerGame;
+    }
+
+    public void setFieldGoalsPerGame(Double fieldGoalsPerGame) {
         this.fieldGoalsPerGame = fieldGoalsPerGame;
     }
 
-    public void setFieldGoalAttemptsPerGame(double fieldGoalAttemptsPerGame) {
+    public Double getFieldGoalAttemptsPerGame() {
+        return fieldGoalAttemptsPerGame;
+    }
+
+    public void setFieldGoalAttemptsPerGame(Double fieldGoalAttemptsPerGame) {
         this.fieldGoalAttemptsPerGame = fieldGoalAttemptsPerGame;
     }
 
-    public void setThreePointFieldGoals(double threePointFieldGoals) {
+    public Double getFieldGoalAttemptsPercentage() {
+        return fieldGoalAttemptsPercentage;
+    }
+
+    public void setFieldGoalAttemptsPercentage(Double fieldGoalAttemptsPercentage) {
+        this.fieldGoalAttemptsPercentage = fieldGoalAttemptsPercentage;
+    }
+
+    public Double getThreePointFieldGoals() {
+        return threePointFieldGoals;
+    }
+
+    public void setThreePointFieldGoals(Double threePointFieldGoals) {
         this.threePointFieldGoals = threePointFieldGoals;
     }
 
-    public void setThreePointFieldGoalAttempts(double threePointFieldGoalAttempts) {
+    public Double getThreePointFieldGoalAttempts() {
+        return threePointFieldGoalAttempts;
+    }
+
+    public void setThreePointFieldGoalAttempts(Double threePointFieldGoalAttempts) {
         this.threePointFieldGoalAttempts = threePointFieldGoalAttempts;
     }
 
-    public void setThreePointFieldGoalPercentage(double threePointFieldGoalPercentage) {
+    public Double getThreePointFieldGoalPercentage() {
+        return threePointFieldGoalPercentage;
+    }
+
+    public void setThreePointFieldGoalPercentage(Double threePointFieldGoalPercentage) {
         this.threePointFieldGoalPercentage = threePointFieldGoalPercentage;
     }
 
-    public void setTwoPointFieldGoals(double twoPointFieldGoals) {
+    public Double getTwoPointFieldGoals() {
+        return twoPointFieldGoals;
+    }
+
+    public void setTwoPointFieldGoals(Double twoPointFieldGoals) {
         this.twoPointFieldGoals = twoPointFieldGoals;
     }
 
-    public void setTwoPA(double twoPA) {
+    public Double getTwoPA() {
+        return twoPA;
+    }
+
+    public void setTwoPA(Double twoPA) {
         this.twoPA = twoPA;
     }
 
-    public void setTwoPPercent(double twoPPercent) {
+    public Double getTwoPPercent() {
+        return twoPPercent;
+    }
+
+    public void setTwoPPercent(Double twoPPercent) {
         this.twoPPercent = twoPPercent;
     }
 
-    public void seteFGPercent(double eFGPercent) {
+    public Double geteFGPercent() {
+        return eFGPercent;
+    }
+
+    public void seteFGPercent(Double eFGPercent) {
         this.eFGPercent = eFGPercent;
     }
 
-    public void setFreeThrows(double freeThrows) {
+    public Double getFreeThrows() {
+        return freeThrows;
+    }
+
+    public void setFreeThrows(Double freeThrows) {
         this.freeThrows = freeThrows;
     }
 
-    public void setFreeThrowAttempts(double freeThrowAttempts) {
+    public Double getFreeThrowAttempts() {
+        return freeThrowAttempts;
+    }
+
+    public void setFreeThrowAttempts(Double freeThrowAttempts) {
         this.freeThrowAttempts = freeThrowAttempts;
     }
 
-    public void setFreeThrowPercent(double freeThrowPercent) {
+    public Double getFreeThrowPercent() {
+        return freeThrowPercent;
+    }
+
+    public void setFreeThrowPercent(Double freeThrowPercent) {
         this.freeThrowPercent = freeThrowPercent;
     }
 
-    public void setOffensiveRebounds(double offensiveRebounds) {
+    public Double getOffensiveRebounds() {
+        return offensiveRebounds;
+    }
+
+    public void setOffensiveRebounds(Double offensiveRebounds) {
         this.offensiveRebounds = offensiveRebounds;
     }
 
-    public void setDefensiveRebounds(double defensiveRebounds) {
+    public Double getDefensiveRebounds() {
+        return defensiveRebounds;
+    }
+
+    public void setDefensiveRebounds(Double defensiveRebounds) {
         this.defensiveRebounds = defensiveRebounds;
     }
 
-    public void setTotalRebounds(double totalRebounds) {
+    public Double getTotalRebounds() {
+        return totalRebounds;
+    }
+
+    public void setTotalRebounds(Double totalRebounds) {
         this.totalRebounds = totalRebounds;
     }
 
-    public void setAssists(double assists) {
+    public Double getAssists() {
+        return assists;
+    }
+
+    public void setAssists(Double assists) {
         this.assists = assists;
     }
 
-    public void setSteals(double steals) {
+    public Double getSteals() {
+        return steals;
+    }
+
+    public void setSteals(Double steals) {
         this.steals = steals;
     }
 
-    public void setBlocks(double blocks) {
+    public Double getBlocks() {
+        return blocks;
+    }
+
+    public void setBlocks(Double blocks) {
         this.blocks = blocks;
     }
 
-    public void setTurnovers(double turnovers) {
+    public Double getTurnovers() {
+        return turnovers;
+    }
+
+    public void setTurnovers(Double turnovers) {
         this.turnovers = turnovers;
     }
 
-    public void setPersonalFouls(double personalFouls) {
+    public Double getPersonalFouls() {
+        return personalFouls;
+    }
+
+    public void setPersonalFouls(Double personalFouls) {
         this.personalFouls = personalFouls;
     }
 
-    public void setPointsPerGame(double pointsPerGame) {
+    public Double getPointsPerGame() {
+        return pointsPerGame;
+    }
+
+    public void setPointsPerGame(Double pointsPerGame) {
         this.pointsPerGame = pointsPerGame;
     }
 }
